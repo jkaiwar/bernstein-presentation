@@ -14,6 +14,35 @@
 \begin{document}
 \frame{\titlepage}
 
+\begin{frame}{Weierstrass approximation theorem}
+\begin{theorem}
+The Weierstrass approximation theorem states that...
+\end{theorem}
+\end{frame}
+
+\begin{frame}{Probabilistic Proof}
+Consider an event $A$, where
+$$\mathbb{P}(A)=x$$
+Consider a continuous function $F$.
+\newline 
+Assume $n$ experiments are conducted and the player is paid the sum $F(\frac{m}{n})$ if the event $A$ occurs $m$ times.    
+\end{frame}
+
+\begin{frame}{Probabilistic Proof}
+Now, calculate the expected value of the money received by the player.
+\begin{equation*}
+      E_n = \sum_{m=0}^{n} F \left( \frac{m}{n} \right) \binom{m}{n} x^n (1-x)^{n-m}
+\end{equation*}
+Note that this is a polynomial.
+\end{frame}
+
+\begin{frame}{Probabilistic Proof}
+By definition of continuity,
+\begin{equation*}
+    (\exists\delta>0)(|x-x_0|<\delta)\implies(\forall\ebsilon>0)[]
+\end{equation*}
+\end{frame}
+
 \end{document}
 
 %%% Local Variables:
