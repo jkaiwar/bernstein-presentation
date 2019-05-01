@@ -33,6 +33,52 @@
   \end{itemize}
 \end{frame}
 
+\begin{frame}{Bernstein Polynomials}
+We know by the definition of Taylor's theorem that it is used to approximate functions around fixed points in an interval. According to Weierstrass approximation theorem, it looks unsuitable to use Taylor's theorem. In this case we use Bernstein polynomials and their properties.    
+\end{frame}
+
+\begin{frame}{Definition}
+A Bernstein basis polynomial, degree $n$ is defined by
+\begin{equation}
+\label{eq:bp:1}
+ B_{i,n}(x)=\binom{n}{i}x^i(1-x)^{n-i} 
+\end{equation}
+The Bernstein polynomial of a function $f$ is defined by:
+\begin{equation}
+B_n(f)=B_n(t;f)=\sum_{i=0}^nf(\frac{i}{n})B_{i,n}(t)   
+\end{equation}    
+\end{frame}
+\begin{frame}{Bernstein Polynomials under a graph}
+\begin{figure}
+    \centering
+    \includegraphics[width=95mm]{BP.jpg}
+    \caption{Graph of Bernstein Polynomial of degree 3}
+    \label{fig:1}
+\end{figure}    
+\end{frame}
+\begin{frame}{Properties of Bernstein polynomials}
+\begin{theorem}[Recursive definition]
+We can consider a basis of degree n and can be defined as the sum of two Bernstein polynomials of degree $n-1$.
+\begin{equation*}
+B_{i,n}(t)=(1-t)B_{i,n-1}(t)+tB_{i-1,n-1}(t)    
+\end{equation*}
+\end{theorem}
+\end{frame}
+\begin{frame}{Properties of Bernstein polynomials}
+\begin{theorem}[Positivity]
+Bernstein basis polynomials are all considered positive if we take them in the interval $[0,1]$ and strictly positive on the interval $(0,1)$.
+\end{theorem}    
+\end{frame}
+\begin{frame}{Properties of Bernstein polynomials}
+\begin{theorem}[Bernstein polynomials form a partition of unity]
+Consider a set of funtions $f_i(t)$. this is said to be a partition of unity if and only if their sum is equal to $1$ for all values of $t$. So, the $k + 1$ Bernstein basis polynomials for a Bernstein polynomial of degree $k$ form a partition of unity. That is:
+\begin{equation*}
+B_k(t)=\sum_{i=0}^nB_{i,n}(t)= B_{0,n}(t)+B_{1,n}(t)+...+B_{n,n}(t)=1,
+\end{equation*}
+for $0\leq t\leq 1$  
+\end{theorem}    
+\end{frame}
+
 
 \begin{frame}{Weierstrass approximation theorem}
 \begin{theorem}[Weierstrass approximation theorem]
@@ -142,51 +188,7 @@ Hence, we get
 Since we know $E_n$ is clearly a polynomial with degree $n$, so the theorem is proved.
 \end{frame}
 
-\begin{frame}{Bernstein Polynomials}
-We know by the definition of Taylor's theorem that it is used to approximate functions around fixed points in an interval. According to Weierstrass approximation theorem, it looks unsuitable to use Taylor's theorem. In this case we use Bernstein polynomials and their properties.    
-\end{frame}
 
-\begin{frame}{Definition}
-A Bernstein basis polynomial, degree $n$ is defined by
-\begin{equation}
-\label{eq:bp:1}
- B_{i,n}(x)=\binom{n}{i}x^i(1-x)^{n-i} 
-\end{equation}
-The Bernstein polynomial of a function $f$ is defined by:
-\begin{equation}
-B_n(f)=B_n(t;f)=\sum_{i=0}^nf(\frac{i}{n})B_{i,n}(t)   
-\end{equation}    
-\end{frame}
-\begin{frame}{Bernstein Polynomials under a graph}
-\begin{figure}
-    \centering
-    \includegraphics[width=95mm]{BP.jpg}
-    \caption{Graph of Bernstein Polynomial of degree 3}
-    \label{fig:1}
-\end{figure}    
-\end{frame}
-\begin{frame}{Properties of Bernstein polynomials}
-\begin{theorem}[Recursive definition]
-We can consider a basis of degree n and can be defined as the sum of two Bernstein polynomials of degree $n-1$.
-\begin{equation*}
-B_{i,n}(t)=(1-t)B_{i,n-1}(t)+tB_{i-1,n-1}(t)    
-\end{equation*}
-\end{theorem}
-\end{frame}
-\begin{frame}{Properties of Bernstein polynomials}
-\begin{theorem}[Positivity]
-Bernstein basis polynomials are all considered positive if we take them in the interval $[0,1]$ and strictly positive on the interval $(0,1)$.
-\end{theorem}    
-\end{frame}
-\begin{frame}{Properties of Bernstein polynomials}
-\begin{theorem}[Bernstein polynomials form a partition of unity]
-Consider a set of funtions $f_i(t)$. this is said to be a partition of unity if and only if their sum is equal to $1$ for all values of $t$. So, the $k + 1$ Bernstein basis polynomials for a Bernstein polynomial of degree $k$ form a partition of unity. That is:
-\begin{equation*}
-B_k(t)=\sum_{i=0}^nB_{i,n}(t)= B_{0,n}(t)+B_{1,n}(t)+...+B_{n,n}(t)=1,
-\end{equation*}
-for $0\leq t\leq 1$  
-\end{theorem}    
-\end{frame}
 \end{document}
 
 %%% Local Variables:
