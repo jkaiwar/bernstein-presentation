@@ -15,8 +15,12 @@
 \frame{\titlepage}
 
 \begin{frame}{Weierstrass approximation theorem}
-\begin{theorem}
-The Weierstrass approximation theorem states that...
+\begin{theorem}[Weierstrass approximation theorem]
+If $F(x)$ is any continuous function in the interval $[0,1]$, it is always possible, regardless how small $\epsilon$, to determine a polynomial $E_n=a_0x^n+a_1x^{n-1}+\dots+a_n$ of degree $n$ high enough such that we have
+\begin{equation*}
+    |F(x)-E_n(x)|<\epsilon
+\end{equation*}
+for every point in the interval under consideration.
 \end{theorem}
 \end{frame}
 
@@ -31,18 +35,138 @@ Assume $n$ experiments are conducted and the player is paid the sum $F(\frac{m}{
 \begin{frame}{Probabilistic Proof}
 Now, calculate the expected value of the money received by the player.
 \begin{equation*}
-      E_n = \sum_{m=0}^{n} F \left( \frac{m}{n} \right) \binom{m}{n} x^n (1-x)^{n-m}
+      E_n =:E(F(\frac{m}{n})) = \sum_{m=0}^{n} F \left( \frac{m}{n} \right) \binom{m}{n} x^n (1-x)^{n-m}
 \end{equation*}
-Note that this is a polynomial.
+Note that this is a polynomial with degree $n$.
 \end{frame}
 
 \begin{frame}{Probabilistic Proof}
-By definition of continuity,
+End goal:
 \begin{equation*}
-    (\exists\delta>0)(|x-x_0|<\delta)\implies(\forall\ebsilon>0)[]
+    |F(x)-E_n(x)|<\epsilon
 \end{equation*}
 \end{frame}
 
+\begin{frame}{Probabilistic Proof}
+By definition of continuity, we have:
+\begin{equation*}
+    (\exists\delta>0)(|x-x_0|<\delta)\implies(\forall\epsilon>0)(|F(x)-F(x_0)|<\frac{\epsilon}{2})
+\end{equation*}
+\end{frame}
+
+\begin{frame}{Step 1}
+Consider $|x-\frac{m}{n}|<\delta$.
+\newline
+Let $\overline{F}(x)$ be the maximum and $\underline{F}(x)$ be the minimum of $F(x)$ for $x$ in this interval.
+\newline
+Now consider $|x-\frac{m}{n}|>\delta$.
+\newline
+Set the maximum of $|F(x)|$ in this interval be $L$.
+\newline
+Then, let $\eta$ be the probability that the inequality is $|x-\frac{m}{n}|>\delta$. Conversely, the probability that the inequality is $|x-\frac{m}{n}|<\delta$ is $(1-\eta)$.
+\end{frame}
+
+\begin{frame}{Step 2}
+Looking back at the function $E_n$,
+\begin{align*}
+    E_n(x) &= \mathbb{E}\left(F\left(\frac{m}{n}\right)\cdot1\right) \\
+    &= \mathbb{E}\left(F\left(\frac{m}{n}\right)\cdot \mathbb{I}\left[|x-\frac{m}{n}|>\delta\right]\right) + \mathbb{E}\left(F\left(\frac{m}{n}\right)\cdot \mathbb{I}\left[|x-\frac{m}{n}|<\delta\right]\right)\\
+\end{align*}
+\end{frame}
+
+\begin{frame}{Step 3}
+So, we have the following inequality,
+\begin{align*}
+    -L\cdot\eta&<\mathbb{E}\left(F\left(\frac{m}{n}\right)\cdot \mathbb{I}\left[|x-\frac{m}{n}|>\delta\right]\right)<L\cdot\eta\\
+    \underline{F}(x)\cdot(1-\eta)&<\mathbb{E}\left(F\left(\frac{m}{n}\right)\cdot \mathbb{I}\left[|x-\frac{m}{n}|<\delta\right]\right)<\overline{F}(x)\cdot (1-\eta)
+\end{align*}
+Combining both inequalities, 
+\begin{equation}\label{ineq1}
+ \underline{F}(x)\cdot(1-\eta)-L\cdot\eta<E_n(x)<\overline{F}(x)\cdot (1-\eta)+L\cdot\eta 
+\end{equation}
+\end{frame}
+
+\begin{frame}{Step 4}
+By the law of large numbers from probability theory, we have that
+\begin{equation*}
+    \frac{m}{n}\longrightarrow x \;\;\text{as}\;\;n \rightarrow \infty
+\end{equation*}
+Hence, $\eta$ tends to zero.
+\newline
+Therefore, we can take $n$ large enough such that 
+\begin{equation*}
+\eta<\frac{\epsilon}{4L}
+\end{equation*}
+\end{frame}
+
+\begin{frame}{Step 5}
+Going back to the inequality(\ref{ineq1}) and rearranging,
+\begin{equation*}
+ \underline{F}(x)\cdot(1-\eta)-L\cdot\eta<E_n(x)<\overline{F}(x)\cdot (1-\eta)+L\cdot\eta 
+\end{equation*}
+\begin{align*}
+    F(x)+(\underline{F}(x)-F(x))-\eta(L+\underline{F}(x))<E_n(x)< &F(x)+(\overline{F}(x)-F(x))\\
+    &+\eta(L-\overline{F}(x))
+\end{align*}
+And so,
+\begin{equation*}
+    F(x)-\frac{\epsilon}{2}-\frac{2L}{4L}\epsilon<E_n(x)<F(x)+\frac{\epsilon}{2}+\frac{2L}{4L}\epsilon
+\end{equation*}
+\end{frame}
+
+\begin{frame}{Conclusion}
+Hence, we get
+\begin{equation*}
+    |F(x)-E_n(x)|<\epsilon
+\end{equation*}
+Since we know $E_n$ is clearly a polynomial with degree $n$, so the theorem is proved.
+\end{frame}
+
+\begin{frame}{Bernstein Polynomials}
+We know by the definition of Taylor's theorem that it is used to approximate functions around fixed points in an interval. According to Weierstrass approximation theorem, it looks unsuitable to use Taylor's theorem. In this case we use Bernstein polynomials and their properties.    
+\end{frame}
+
+\begin{frame}{Definition}
+A Bernstein basis polynomial, degree $n$ is defined by
+\begin{equation}
+\label{eq:bp:1}
+ B_{i,n}(x)=\binom{n}{i}x^i(1-x)^{n-i} 
+\end{equation}
+The Bernstein polynomial of a function $f$ is defined by:
+\begin{equation}
+B_n(f)=B_n(t;f)=\sum_{i=0}^nf(\frac{i}{n})B_{i,n}(t)   
+\end{equation}    
+\end{frame}
+\begin{frame}{Bernstein Polynomials under a graph}
+\begin{figure}
+    \centering
+    \includegraphics[width=95mm]{BP.jpg}
+    \caption{Graph of Bernstein Polynomial of degree 3}
+    \label{fig:1}
+\end{figure}    
+\end{frame}
+\begin{frame}{Properties of Bernstein polynomials}
+\begin{theorem}[Recursive definition]
+We can consider a basis of degree n and can be defined as the sum of two Bernstein polynomials of degree $n-1$.
+\begin{equation*}
+B_{i,n}(t)=(1-t)B_{i,n-1}(t)+tB_{i-1,n-1}(t)    
+\end{equation*}
+\end{theorem}
+\end{frame}
+\begin{frame}{Properties of Bernstein polynomials}
+\begin{theorem}[Positivity]
+Bernstein basis polynomials are all considered positive if we take them in the interval $[0,1]$ and strictly positive on the interval $(0,1)$.
+\end{theorem}    
+\end{frame}
+\begin{frame}{Properties of Bernstein polynomials}
+\begin{theorem}[Bernstein polynomials form a partition of unity]
+Consider a set of funtions $f_i(t)$. this is said to be a partition of unity if and only if their sum is equal to $1$ for all values of $t$. So, the $k + 1$ Bernstein basis polynomials for a Bernstein polynomial of degree $k$ form a partition of unity. That is:
+\begin{equation*}
+B_k(t)=\sum_{i=0}^nB_{i,n}(t)= B_{0,n}(t)+B_{1,n}(t)+...+B_{n,n}(t)=1,
+\end{equation*}
+for $0\leq t\leq 1$  
+\end{theorem}    
+\end{frame}
 \end{document}
 
 %%% Local Variables:
