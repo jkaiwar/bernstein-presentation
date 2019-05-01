@@ -100,6 +100,50 @@ for $0\leq t\leq 1$
 
 \begin{frame}
   \frametitle{B\'ezier Curves}
+  \begin{itemize}
+  \item<+-> $\mathbf{r}(t) := \sum_{i=0}^{n} B_{i,n}(t) \mathbf{b}_i$
+  \item<+-> $r, b_i \in \mathbb{R}^2$ and $B_{i,n}(t)$ is the Bernstein basis.
+  \item<+-> The B\'ezier Curve lies in the convex hull of its basis points.
+\end{itemize}
+ \end{frame}
+
+\begin{frame}
+  \frametitle{A Linear B\'ezier Curve}
+  \begin{figure}
+  \centering
+  \begin{tikzpicture}
+    \filldraw
+    (0,0) circle (1pt) node [left] {$\mathbf{b}_0$} --
+    (1.5,1) circle (1pt) node [below] {$\mathbf{r}(\frac{1}{2})$} --
+    (3,2) circle (1pt) node [right] {$\mathbf{b}_1$};
+  \end{tikzpicture}
+  \caption{$\mathbf{r}(t) = \mathbf{b}_0 (1 - t) + \mathbf{b}_1 t$}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{A Cubic B\'ezier Curve}
+\begin{figure}
+  \centering
+  \begin{tikzpicture}
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (2,3);
+    \coordinate (C) at (5,3);
+    \coordinate (D) at (4,0);
+    \draw (A) .. controls (B) and (C) .. (D);
+    \filldraw [dotted]
+    (A) circle (1pt) node [left] {$\mathbf{b}_0$} --
+    (B) circle (1pt) node [left] {$\mathbf{b}_1$};
+    \filldraw [dotted]
+    (C) circle (1pt) node [right] {$\mathbf{b}_2$} --
+    (D) circle (1pt) node [right] {$\mathbf{b}_3$};
+  \end{tikzpicture}
+  \caption{$\mathbf{r}(t) = (1-t)^3 \mathbf{b}_0 + t(1-t)^2 \mathbf{b}_1 + t^2(1-t) \mathbf{b}_2 + t^3 \mathbf{b}_3$}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{B\'ezier Curves}
   \begin{figure}
   \centering
   \begin{tikzpicture}
@@ -134,48 +178,6 @@ for $0\leq t\leq 1$
     (h012) circle (1pt) --
     (c) circle (1pt) node [above] {$\mathbf{c}$} --
     (h123) circle (1pt);
-  \end{tikzpicture}
-\end{figure}
-\end{frame}
-
-\begin{frame}
-  \frametitle{B\'ezier Curves}
-  \begin{itemize}
-  \item<+-> $\mathbf{r}(t) := \sum_{i=0}^{n} B_{i,n}(t) \mathbf{b}_i$
-  \item<+-> $r, b_i \in \mathbb{R}^2$ and $B_{i,n}(t)$ is the Bernstein basis.
-  \item<+-> The B\'ezier Curve lies in the convex hull of its basis points.
-\end{itemize}
- \end{frame}
-
-\begin{frame}
-  \frametitle{A Linear B\'ezier Curve}
-  \begin{figure}
-  \centering
-  \begin{tikzpicture}
-    \filldraw
-    (0,0) circle (1pt) node [left] {$\mathbf{b}_0$} --
-    (1.5,1) circle (1pt) node [below] {$\mathbf{r}(\frac{1}{2})$} --
-    (3,2) circle (1pt) node [right] {$\mathbf{b}_1$};
-  \end{tikzpicture}
-\end{figure}
-\end{frame}
-
-\begin{frame}
-  \frametitle{A Cubic B\'ezier Curve}
-\begin{figure}
-  \centering
-  \begin{tikzpicture}
-    \coordinate (A) at (0,0);
-    \coordinate (B) at (2,3);
-    \coordinate (C) at (5,3);
-    \coordinate (D) at (4,0);
-    \draw (A) .. controls (B) and (C) .. (D);
-    \filldraw [dotted]
-    (A) circle (1pt) node [left] {$\mathbf{b}_0$} --
-    (B) circle (1pt) node [left] {$\mathbf{b}_1$};
-    \filldraw [dotted]
-    (C) circle (1pt) node [right] {$\mathbf{b}_2$} --
-    (D) circle (1pt) node [right] {$\mathbf{b}_3$};
   \end{tikzpicture}
 \end{figure}
 \end{frame}
