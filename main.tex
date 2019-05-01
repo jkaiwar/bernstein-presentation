@@ -1,5 +1,7 @@
 \documentclass[mathserif,serif]{beamer}
 \usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usetikzlibrary{calc}
 
 \title{Weierstrass' Approximation Theorem and Bernstein Polynomials}
 \author{Jishnu Kaiwar
@@ -31,6 +33,16 @@
   \item 1908: Charles Poussin poses the question: \emph{Can we approximate functions with $n$-degree polynomials with an error less than $\frac{1}{n}$?}
   \item 1911: Sergei Bernstein solves this problem using \emph{Probability Theory}.
   \end{itemize}
+\end{frame}
+
+\begin{frame}{Weierstrass approximation theorem}
+\begin{theorem}[Weierstrass approximation theorem]
+If $F(x)$ is any continuous function in the interval $[0,1]$, it is always possible, regardless how small $\epsilon$, to determine a polynomial $E_n=a_0x^n+a_1x^{n-1}+\dots+a_n$ of degree $n$ high enough such that we have
+\begin{equation*}
+    |F(x)-E_n(x)|<\epsilon
+\end{equation*}
+for every point in the interval under consideration.
+\end{theorem}
 \end{frame}
 
 \begin{frame}{Bernstein Polynomials}
@@ -79,6 +91,87 @@ for $0\leq t\leq 1$
 \end{theorem}    
 \end{frame}
 
+\begin{frame}
+  \frametitle{B\'ezier Curves}
+  \begin{figure}
+  \centering
+  \begin{tikzpicture}
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (3,6);
+    \coordinate (C) at (6,7);
+    \coordinate (D) at (10,2);
+    \coordinate (h01) at ($0.5*(A) + 0.5*(B)$);
+    \coordinate (h12) at ($0.5*(B) + 0.5*(C)$);
+    \coordinate (h23) at ($0.5*(C) + 0.5*(D)$);
+    \coordinate (h012) at ($0.5*(h01) + 0.5*(h12)$);
+    \coordinate (h123) at ($0.5*(h12) + 0.5*(h23)$);
+    \coordinate (c) at ($0.5*(h012) + 0.5*(h123)$);
+    \draw (A) .. controls (B) and (C) .. (D);
+    \draw [gray]
+    (A) circle (1pt) node [left] {$\mathbf{b}_0$} --
+    (h01) circle (1pt) node [left] {$\mathbf{h}_{01}$} --
+    (B) circle (1pt) node [left] {$\mathbf{b}_1$} --
+    (h12) circle (1pt) node [above] {$\mathbf{h}_{12}$} --
+    (C) circle (1pt) node [right] {$\mathbf{b}_2$} --
+    (h23) circle (1pt) node [right] {$\mathbf{h}_{23}$} --
+    (D) circle (1pt) node [right] {$\mathbf{b}_3$};
+    \filldraw[dotted]
+    (h01) circle (1pt) --
+    (h012) circle (1pt) node [left] {$\mathbf{h}_{012}$} --
+    (h12) circle (1pt);
+    \filldraw[dotted]
+    (h12) circle (1pt) --
+    (h123) circle (1pt) node [right] {$\mathbf{h}_{123}$} --
+    (h23) circle (1pt);
+    \filldraw[dotted]
+    (h012) circle (1pt) --
+    (c) circle (1pt) node [above] {$\mathbf{c}$} --
+    (h123) circle (1pt);
+  \end{tikzpicture}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{B\'ezier Curves}
+  \begin{itemize}
+  \item<+-> $\mathbf{r}(t) := \sum_{i=0}^{n} B_{i,n}(t) \mathbf{b}_i$
+  \item<+-> $r, b_i \in \mathbb{R}^2$ and $B_{i,n}(t)$ is the Bernstein basis.
+  \item<+-> The B\'ezier Curve lies in the convex hull of its basis points.
+\end{itemize}
+ \end{frame}
+
+\begin{frame}
+  \frametitle{A Linear B\'ezier Curve}
+  \begin{figure}
+  \centering
+  \begin{tikzpicture}
+    \filldraw
+    (0,0) circle (1pt) node [left] {$\mathbf{b}_0$} --
+    (1.5,1) circle (1pt) node [below] {$\mathbf{r}(\frac{1}{2})$} --
+    (3,2) circle (1pt) node [right] {$\mathbf{b}_1$};
+  \end{tikzpicture}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{A Cubic B\'ezier Curve}
+\begin{figure}
+  \centering
+  \begin{tikzpicture}
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (2,3);
+    \coordinate (C) at (5,3);
+    \coordinate (D) at (4,0);
+    \draw (A) .. controls (B) and (C) .. (D);
+    \filldraw [dotted]
+    (A) circle (1pt) node [left] {$\mathbf{b}_0$} --
+    (B) circle (1pt) node [left] {$\mathbf{b}_1$};
+    \filldraw [dotted]
+    (C) circle (1pt) node [right] {$\mathbf{b}_2$} --
+    (D) circle (1pt) node [right] {$\mathbf{b}_3$};
+  \end{tikzpicture}
+\end{figure}
+\end{frame}
 
 \begin{frame}{Weierstrass approximation theorem}
 \begin{theorem}[Weierstrass approximation theorem]
