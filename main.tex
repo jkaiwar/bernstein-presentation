@@ -1,4 +1,4 @@
-\documentclass{beamer}
+\documentclass[mathserif,serif]{beamer}
 \usepackage[utf8]{inputenc}
 
 \title{Weierstrass' Approximation Theorem and Bernstein Polynomials}
@@ -13,6 +13,26 @@
 
 \begin{document}
 \frame{\titlepage}
+
+\begin{frame}
+  \frametitle{Approximating functions with polynomials.}
+  \begin{itemize}
+  \item<+-> Is it possible?
+  \item<+-> Where is it possible?
+  \item<+-> What do we mean by approximate?
+
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{History of the Problem}
+  \begin{itemize}
+  \item 1885: Karl Weierstrass (1815-1897) establishes his Approximation Theorem, provides a general proof.
+  \item 1908: Charles Poussin poses the question: \emph{Can we approximate functions with $n$-degree polynomials with an error less than $\frac{1}{n}$?}
+  \item 1911: Sergei Bernstein solves this problem using \emph{Probability Theory}.
+  \end{itemize}
+\end{frame}
+
 
 \begin{frame}{Weierstrass approximation theorem}
 \begin{theorem}
@@ -37,10 +57,10 @@ Note that this is a polynomial.
 \end{frame}
 
 \begin{frame}{Probabilistic Proof}
-By definition of continuity,
-\begin{equation*}
+  By definition of continuity,
+  \begin{equation*}
     (\exists\delta>0)(|x-x_0|<\delta)\implies(\forall\ebsilon>0)[]
-\end{equation*}
+  \end{equation*}
 \end{frame}
 
 \end{document}
