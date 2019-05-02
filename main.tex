@@ -231,13 +231,14 @@ Now consider $|x-\frac{m}{n}|>\delta$.
 \newline
 Set the maximum of $|F(x)|$ in this interval be $L$.
 \newline
-Then, let $\eta$ be the probability that the inequality is $|x-\frac{m}{n}|>\delta$. Conversely, the probability that the inequality is $|x-\frac{m}{n}|<\delta$ is $(1-\eta)$.
+Then, let $\eta$ be the probability such that $|x-\frac{m}{n}|>\delta$. Conversely, the probability that the inequality is $|x-\frac{m}{n}|<\delta$ is $(1-\eta)$.
 \end{frame}
 
 \begin{frame}{Step 2}
 Looking back at the function $E_n$,
 \begin{align*}
     E_n(x) &= \mathbb{E}\left(F\left(\frac{m}{n}\right)\cdot1\right) \\
+    &= \mathbb{E}\left(F\left(\frac{m}{n}\right)\cdot(\eta+(1-\eta))\right) \\
     &= \mathbb{E}\left(F\left(\frac{m}{n}\right)\cdot \mathbb{I}\left[|x-\frac{m}{n}|>\delta\right]\right) + \mathbb{E}\left(F\left(\frac{m}{n}\right)\cdot \mathbb{I}\left[|x-\frac{m}{n}|<\delta\right]\right)\\
 \end{align*}
 \end{frame}
